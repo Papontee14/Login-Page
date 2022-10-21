@@ -9,6 +9,15 @@ const [password,setPassword] = useState('')
 const [errorUserName,setErrorUserName] = useState('')
 const [errorPassword,setErrorPassword] = useState('')
 const [errorLogIn,setErrorLogIn] = useState('')
+const id = {
+    username:'papontee14',
+    password:'arnadmin01'
+}
+
+const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+   
+  };
 
 const validateForm = (e) => {
     e.preventDefault();
@@ -31,6 +40,13 @@ const validateForm = (e) => {
     }
     else{
         setErrorLogIn('')
+    }
+
+    if(userName == id.username && password == id.password){
+        openInNewTab('/name_list')
+    }
+    else{
+        setErrorLogIn('please check your username and password')
     }
 }
 
@@ -58,7 +74,7 @@ const validateForm = (e) => {
                 </div>
                 </div>
                 <small className="block text-red-400">{errorLogIn}</small>
-                <Link type="submit" to="/name_list" className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white w-5/12 h-12 m-2  flex justify-center items-center">Login</Link>
+                <button type="submit" to="/name_list" className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white w-5/12 h-12 m-2  flex justify-center items-center">Login</button>
                 <div><a className="text-xs">Don't have an account yet?</a><a className="cursor-pointer text-sm mx-1 text-blue-900 underline">Sign up</a></div>
             </div>
             </form>
